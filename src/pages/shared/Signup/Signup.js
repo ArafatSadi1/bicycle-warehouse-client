@@ -1,3 +1,4 @@
+import { sendEmailVerification } from "firebase/auth";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -12,7 +13,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [error, setError] = useState('');
-  const [createUserWithEmailAndPassword, user, userError, loading] = useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, userError, loading] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   const navigate = useNavigate();
 
@@ -23,7 +24,6 @@ const Signup = () => {
   if(user){
     navigate('/')
   }
-
 
   const getEmail = (event) => {
     setEmail(event.target.value);
