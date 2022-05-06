@@ -9,6 +9,7 @@ import UpdateProduct from "./pages/UpdateProduct/UpdateProduct";
 import RequiredAuth from "./pages/RequiredAuth/RequiredAuth";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import ManageInventories from "./pages/ManageInventories/ManageInventories";
 
 function App() {
   return (
@@ -24,6 +25,14 @@ function App() {
           element={
             <RequiredAuth>
               <UpdateProduct></UpdateProduct>
+            </RequiredAuth>
+          }
+        ></Route>
+        <Route
+          path="/manage"
+          element={
+            <RequiredAuth>
+              <ManageInventories></ManageInventories>
             </RequiredAuth>
           }
         ></Route>
