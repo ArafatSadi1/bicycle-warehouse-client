@@ -22,7 +22,7 @@ const Product = ({product}) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer className="m-0 p-0 border-0">
-            <Link to={`/update/${_id}`} className="btn btn-dark py-2 w-100 fw-bold fs-5 rounded-2">Stock Update</Link>
+            <Link to={`/update/${_id}`} className="btn btn-warning py-2 w-100 fw-bold fs-5 rounded-2">Stock Update</Link>
         </Card.Footer>
       </div>
     </Col>
