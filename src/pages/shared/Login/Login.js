@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../Loading/Loading";
@@ -14,8 +14,9 @@ const Login = () => {
     signInWithEmailAndPassword,
     signInuser,
     signInLoading,
-    error,
+    signInError,
   ] = useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, GoogleUser, GoogleLoading, GoogleError] = useSignInWithGoogle(auth);
   const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
     auth
   );
@@ -29,7 +30,7 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
-  if(loading){
+  if(signInLoading || GoogleLoading || loading){
     return <Loading></Loading>
   }
   
@@ -44,6 +45,11 @@ const Login = () => {
     event.preventDefault();
     signInWithEmailAndPassword(email, password);
   }
+
+  const handleGoogleLogin = () =>{
+    signInWithGoogle()
+  }
+
   const handleResetPassword = async(event) =>{
     event.preventDefault()
     if(email){
@@ -66,7 +72,7 @@ const Login = () => {
           <Form.Control onBlur={getPassword} className=" border border-dark" type="password" placeholder="Password" />
         </Form.Group>
         <button onClick={handleResetPassword} className="btn btn-link text-decoration-none mb-5 fs-6">Forgot your password?</button>
-        <p className="text-danger">{error?.message}</p>
+        <p className="text-danger">{signInError?.message} {GoogleError?.message}</p>
         <Button variant="dark" className="d-block mx-auto px-3 py-2" type="submit">
           Sign in
         </Button>
@@ -74,7 +80,7 @@ const Login = () => {
             <Link className="text-decoration-none d-block text-center mt-3" to='/signup'>Create new account</Link>
         </p>
       </Form>
-      <Button variant="danger" className="d-block mx-auto w-25 text-start"><img width={30} className='me-2' src={googleLogo} alt="" /> Sign In With Google</Button>
+      <Button onClick={handleGoogleLogin} variant="danger" className="d-block mx-auto w-25 text-start"><img width={30} className='me-2' src={googleLogo} alt="" /> Sign In With Google</Button>
     </div>
   );
 };
