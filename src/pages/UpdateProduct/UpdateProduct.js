@@ -32,6 +32,7 @@ const UpdateProduct = () => {
       })
         .then((res) => res.json())
         .then((updatedData) => setProduct(updatedData));
+        // toast('Delivery success')
     }
     else{
         setSoldOut("Sold Out");

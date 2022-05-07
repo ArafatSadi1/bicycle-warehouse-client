@@ -5,6 +5,21 @@ import ManageInventory from "./ManageInventory/ManageInventory";
 
 const ManageInventories = () => {
   const [products, setProducts] = useProducts([]);
+  const handleProductDelete = (id) => {
+    const proceed = window.confirm("Are You Sure?");
+    if(proceed){
+      const url = `http://localhost:5000/product/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const remaining = products.filter(product => product._id !== id)
+          setProducts(remaining)
+        });  
+    }
+  };
   return (
     <div className="my-5">
       <Container>
@@ -22,6 +37,7 @@ const ManageInventories = () => {
             <ManageInventory
               key={product._id}
               product={product}
+              handleProductDelete={handleProductDelete}
             ></ManageInventory>
           ))}
         </Table>
