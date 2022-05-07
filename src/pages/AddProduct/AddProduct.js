@@ -1,12 +1,13 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 const AddProduct = () => {
     const [user] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
-    const onSubmit = data =>{
+    const onSubmit = (data, event) =>{
         const url = 'http://localhost:5000/product';
         fetch(url, {
             method: "POST",
@@ -19,12 +20,14 @@ const AddProduct = () => {
         .then(data => {
             console.log('added product',data)
         })
+        event.target.reset()
+        toast('Your Product Added')
     }
   return (
     <div className="w-50 mx-auto my-5 border rounded shadow p-5">
         <h4 className="text-center">Add Your Product</h4>
       <form className="d-flex flex-column" onSubmit={handleSubmit(onSubmit)}>
-        <input className="mb-2 py-1" value={user.email} {...register("email")} readOnly disabled/>
+        <input className="mb-2 py-1" value={user.email} {...register("email")} readOnly />
         <input className="mb-2 py-1" placeholder="Picture" {...register("picture")} required />
         <input className="mb-2 py-1" placeholder="Name" {...register("name")} required />
         <textarea className="mb-2 py-1" placeholder="Description" {...register("about")} required />

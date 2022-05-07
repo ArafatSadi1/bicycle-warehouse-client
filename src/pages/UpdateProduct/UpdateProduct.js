@@ -93,8 +93,6 @@ const UpdateProduct = () => {
                 className="border border-success rounded px-2"
                 placeholder="Number"
                 onBlur={getIncreaseQuantity}
-                // aria-label="Recipient's username"
-                // aria-describedby="basic-addon2"
               />
               <Button onClick={handleIncreaseQuantity} variant="success">
                 Add
@@ -111,13 +109,13 @@ const UpdateProduct = () => {
           </div>
         </Col>
       </Row>
-      <div className="w-50 border mx-auto my-5 p-3 shadow">
+      <div className="w-50 shadow-3 mx-auto my-5 p-3 rounded bg-dark">
         {/* <h3 className="text-center mb-3">Manage Your Products</h3> */}
         <Link
           to="/manage"
           className="btn btn-warning d-block mx-auto w-50 fw-bold"
         >
-          Manage Inventories
+          Manage Products
         </Link>
       </div>
 

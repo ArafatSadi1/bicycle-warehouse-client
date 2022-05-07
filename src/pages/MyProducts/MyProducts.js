@@ -1,29 +1,41 @@
-import React from "react";
-import { Container, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Button, Container, Table } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useParams } from "react-router-dom";
+import ManageInventory from "../ManageInventories/ManageInventory/ManageInventory";
+import auth from "../../firebase.init";
 import useProducts from "../../hooks/useProducts";
-import ManageInventory from "./ManageInventory/ManageInventory";
 
-const ManageInventories = () => {
-  const [products, setProducts] = useProducts([]);
+const MyProducts = () => {
+  // const [user] = useAuthState(auth);
+  const { email } = useParams();
+  const [myProducts, setMyProducts] = useState([]);
+  useEffect(() => {
+    const url = `http://localhost:5000/product?email=${email}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setMyProducts(data));
+  }, []);
   const handleProductDelete = (id) => {
     const proceed = window.confirm("Are You Sure?");
     if(proceed){
-      const url = `http://localhost:5000/product/${id}`;
-      fetch(url, {
+        const url = `http://localhost:5000/product/${id}`;
+        fetch(url, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          const remaining = products.filter(product => product._id !== id)
-          setProducts(remaining)
+          const remaining = myProducts.filter(product => product._id !== id)
+          setMyProducts(remaining);
         });  
     }
   };
+
   return (
     <div className="my-5">
       <Container>
+          <h3 className="text-center mb-5">Manage Your Product</h3>
         <Table className="border-dark" striped bordered hover responsive="sm" >
           <thead>
             <tr>
@@ -34,7 +46,7 @@ const ManageInventories = () => {
               <th className="text-center">Delete</th>
             </tr>
           </thead>
-          {products.map((product) => (
+          {myProducts.map((product) => (
             <ManageInventory
               key={product._id}
               product={product}
@@ -55,4 +67,4 @@ const ManageInventories = () => {
   );
 };
 
-export default ManageInventories;
+export default MyProducts;

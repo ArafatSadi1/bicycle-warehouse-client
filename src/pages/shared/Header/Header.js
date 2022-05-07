@@ -11,11 +11,17 @@ const Header = () => {
   if (loading) {
     return <Loading></Loading>;
   }
-  const handleLogOut = () =>{
-    signOut(auth)
-  }
+  const handleLogOut = () => {
+    signOut(auth);
+  };
   return (
-    <Navbar className="sticky-top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar
+      className="sticky-top"
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+    >
       <Container>
         <Navbar.Brand as={Link} to="/">
           Bicycle-Warehouse
@@ -29,8 +35,29 @@ const Header = () => {
             <Nav.Link as={Link} to="/blogs">
               Blogs
             </Nav.Link>
+            {user && (
+              <Nav.Link as={Link} to="/manage">
+                Manage Products
+              </Nav.Link>
+            )}
+            {user && (
+              <Nav.Link as={Link} to="/addProduct">
+                Add Product
+              </Nav.Link>
+            )}
+            {user && (
+              <Nav.Link as={Link} to={`/myProducts/${user.email}`}>
+                My Products
+              </Nav.Link>
+            )}
             {user ? (
-              <Button onClick={handleLogOut} variant="warning" className="fw-bold ms-2">Log Out</Button>
+              <Button
+                onClick={handleLogOut}
+                variant="warning"
+                className="fw-bold ms-2"
+              >
+                Log Out
+              </Button>
             ) : (
               <Nav.Link as={Link} to="/login">
                 Login
