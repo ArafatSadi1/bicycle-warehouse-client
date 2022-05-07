@@ -15,7 +15,7 @@ const Products = () => {
         ))}
       </Row>
       <div className="w-50 border mx-auto mb-5 p-3 shadow">
-        <h3 className="text-center mb-3">Manage Your Products</h3>
+        {/* <h3 className="text-center mb-3">Manage Your Products</h3> */}
         <Link
           to="/manage"
           className="btn btn-warning d-block mx-auto w-50 fw-bold"

@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import useProducts from "../../hooks/useProducts";
 import ManageInventory from "./ManageInventory/ManageInventory";
 
@@ -41,6 +42,15 @@ const ManageInventories = () => {
             ></ManageInventory>
           ))}
         </Table>
+        <div className="w-50 border mx-auto my-5 p-3 shadow">
+        {/* <h3 className="text-center mb-3">Manage Your Products</h3> */}
+        <Link
+          to="/addProduct"
+          className="btn btn-warning d-block mx-auto w-50 fw-bold"
+        >
+          Add New Product
+        </Link>
+        </div>
       </Container>
     </div>
   );

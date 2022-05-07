@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../Loading/Loading";
 import { toast } from 'react-toastify';
+import googleLogo from '../../../images/google-logo.png'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -70,9 +71,10 @@ const Login = () => {
           Sign in
         </Button>
         <p>
-            <Link className="text-decoration-none d-block text-center mt-3" to='/signup'>Create account</Link>
+            <Link className="text-decoration-none d-block text-center mt-3" to='/signup'>Create new account</Link>
         </p>
       </Form>
+      <Button variant="danger" className="d-block mx-auto w-25 text-start"><img width={30} className='me-2' src={googleLogo} alt="" /> Sign In With Google</Button>
     </div>
   );
 };
