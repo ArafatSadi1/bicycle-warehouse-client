@@ -1,4 +1,52 @@
-[
+[  
+  {
+    "picture": "https://i.ibb.co/t2wmzrQ/bike8.jpg",
+    "name": "Diamondback Atroz 1 - 27.5' Mountain Bike (2021)",
+    "about": "Hand-built 4-inch travel aluminum alloy full-suspension frame is super strong, Optimized single pivot with sealed cartridge bearings for smooth, durable performance, 18 gears courtesy of Shimano 2x9 drivetrain",
+    "price": 1144.98,
+    "quantity": 20,
+    "supplierName": "Robert R."
+  },
+  {
+    "picture": "https://i.ibb.co/rG3t0NF/bike10.jpg",
+    "name": "Line 27.5' Mountain Bike",
+    "about": "Reliable, hand-built 6061-T6 aluminum hardtail frame with progressive, low-slung geometry for trail riding performance, Custom-formed and butted tubing adds strength without adding weight,",
+    "price": 900.00,
+    "quantity": 20,
+    "supplierName": "Robert R."
+  },
+  {
+    "picture": "https://i.ibb.co/9ynzczL/bike11.jpg",
+    "name": "Haanjo 1 Gravel Road Bike (2022)",
+    "about": "DB Alternative Road, Disc Brake, Endurance Geometry, Relaxed Head Tube Angle, Fully Butted 6061-T6 Aluminum Formed Top Tube, 1 1/8' Headtube, Replaceable Hanger",
+    "price": 785.00,
+    "quantity": 20,
+    "supplierName": "Robert R."
+  },
+  {
+    "picture": "https://i.ibb.co/09WxNXL/bike12.jpg",
+    "name": "Metric 3 Hybrid Bike (2021)",
+    "about": "Custom Formed AL-6061 Heat Treated Aluminum Tubing 700c Sport Fitness Geometry, Carbon Disc Road with Carbon Steer Tube, Integrated 1-1/8', Shimano M371 Altus, Aluminum 26/36/48t with Guard",
+    "price": 975.00,
+    "quantity": 20,
+    "supplierName": "Robert R."
+  },
+  {
+    "picture": "https://i.ibb.co/pjRxH5X/bike1.webp",
+    "name": "Overdrive 1 - 29er Mountain Bike (2021)",
+    "about": "Overdrive 29' Butted 6061-T6 Aluminum Forged Drop Outs, w/ Replaceable Hanger, Disc Only, SR Suntour XCT30 29', Coil Spring, 100mm Travel, w/ Preload Adjust",
+    "price": 750.00,
+    "quantity": 20,
+    "supplierName": "Robert R."
+  },
+  {
+    "picture": "https://i.ibb.co/xCCP2gX/bike6.jpg",
+    "name": "Catch 1 - 27.5'+ Mountain Bike 2021",
+    "about": "Catch 27.5+, 130mm Travel, Level Link Suspension Platform, Hydroformed Tubing, ISCG-05 Tabs, Boost 148x12mm Maxle Drop Out, 1.5' Tapered Headtube, Suntour Edge R, 200x57mm, Rebound Adjust, 22.2mm Eyelet Width",
+    "price": 2500.00,
+    "quantity": 20,
+    "supplierName": "Robert R."
+  },
   {
     "picture": "https://images.squarespace-cdn.com/content/v1/57f08e8b579fb34c245b2579/1569462499723-TRGRY4KTU4I8FK568X8U/2019-9-25-1%2Bmidtaille.jpg",
     "name": "Diamondback Atroz 1 - 27.5' Mountain Bike (2021)",

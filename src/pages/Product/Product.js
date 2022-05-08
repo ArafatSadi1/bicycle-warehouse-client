@@ -6,8 +6,8 @@ const Product = ({product}) => {
     const {name, supplierName, price, about, picture, quantity, _id} = product;
   return (
     <Col sm={12} lg={4}>
-      <div className="border border-dark shadow mx-3 mb-5 rounded-2">
-        <Card.Img variant="top" src={picture} />
+      <div className="border shadow mx-3 mb-5 rounded-2">
+        <Card.Img height={300} variant="top" src={picture} />
         <Card.Body>
           <Card.Title className="fs-4 text-start">{name}</Card.Title>
           <Card.Text className="text-start">

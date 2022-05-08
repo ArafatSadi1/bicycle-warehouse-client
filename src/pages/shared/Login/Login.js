@@ -24,7 +24,7 @@ const Login = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const location = useLocation();
-  const [token] = useToken()
+  const [token] = useToken(user);
 
   const from = location.state?.from?.pathname || "/";
 

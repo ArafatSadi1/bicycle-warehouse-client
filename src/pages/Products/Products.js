@@ -8,7 +8,7 @@ const Products = () => {
   const [products, setProducts] = useProducts();
   return (
     <div id="products" className="container">
-      <h2 className="my-3 text-center">Our Stock</h2>
+      <h1 className="my-5 text-center fw-bold">Our Products</h1>
       <Row>
         {products.slice(0, 6).map((product) => (
           <Product key={product._id} product={product}></Product>

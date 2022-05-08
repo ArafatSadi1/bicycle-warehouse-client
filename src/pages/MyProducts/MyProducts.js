@@ -25,8 +25,7 @@ const MyProducts = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          const remaining = myProducts.filter((product) => product._id !== id);
+          const remaining = myProducts?.filter((product) => product._id !== id);
           setMyProducts(remaining);
         });
     }
@@ -47,7 +46,7 @@ const MyProducts = () => {
             </tr>
           </thead>
           <tbody>
-          {myProducts.map((product) => (
+          {myProducts?.map((product) => (
               <tr key={product._id}>
                 <td className="text-center">{product.name}</td>
                 <td className="text-center">{product._id}</td>

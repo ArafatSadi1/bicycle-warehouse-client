@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import auth from "../../../firebase.init"
+import auth from "../../../firebase.init";
+import useToken from "../../../hooks/useToken";
 import Loading from "../Loading/Loading";
+
 
 
 const Signup = () => {
@@ -14,6 +16,7 @@ const Signup = () => {
   const [confirmPass, setConfirmPass] = useState("");
   const [error, setError] = useState('');
   const [createUserWithEmailAndPassword, user, userError, loading] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [token] = useToken(user)
 
   const navigate = useNavigate();
 
