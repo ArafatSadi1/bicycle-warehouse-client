@@ -1,3 +1,18 @@
+# Website Name: [Bicycle WareHouse](https://bicycle-warehouse-d6a15.web.app/)
+Live Website Link : https://bicycle-warehouse-d6a15.web.app/
+
+## Description
+Bicycle Warehouse is a product management website. I have worked on the client site with ReactJS. and I worked on the server site with NodeJS's framework called ExpressJS. and keep products information in mongodb database.
+
+## Bullet Point
+1. use React JS for create client site
+2. Designed the UI using ReactBoostrap & Boostrap
+3. For Authentication I have used firebase
+4. I have used the React Hook form for the AddProduct component
+5. use JWT for secure and verify the user
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
