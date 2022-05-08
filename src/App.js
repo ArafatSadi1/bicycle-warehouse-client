@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ManageInventories from "./pages/ManageInventories/ManageInventories";
 import AddProduct from "./pages/AddProduct/AddProduct";
 import MyProducts from "./pages/MyProducts/MyProducts";
+import NotFound from "./pages/shared/NotFound/NotFound";
 
 function App() {
   return (
@@ -53,6 +54,10 @@ function App() {
               <MyProducts></MyProducts>
             </RequiredAuth>
           }
+        ></Route>
+        <Route
+         path="*"
+         element={<NotFound></NotFound>}
         ></Route>
       </Routes>
       <ToastContainer></ToastContainer>

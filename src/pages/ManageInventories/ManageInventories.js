@@ -9,7 +9,7 @@ const ManageInventories = () => {
   const handleProductDelete = (id) => {
     const proceed = window.confirm("Are You Sure?");
     if(proceed){
-      const url = `http://localhost:5000/product/${id}`;
+      const url = `https://whispering-crag-62697.herokuapp.com/product/${id}`;
       fetch(url, {
         method: "DELETE",
       })

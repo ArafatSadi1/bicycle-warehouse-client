@@ -8,7 +8,7 @@ const AddProduct = () => {
     const [user] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
     const onSubmit = (data, event) =>{
-        const url = 'http://localhost:5000/product';
+        const url = 'https://whispering-crag-62697.herokuapp.com/product';
         fetch(url, {
             method: "POST",
             headers: {

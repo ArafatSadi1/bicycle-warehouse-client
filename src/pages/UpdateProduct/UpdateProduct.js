@@ -44,12 +44,9 @@ const UpdateProduct = () => {
   }
   const handleIncreaseQuantity = () =>{
       const { quantity, ...rest } = product;
-      const newQty = increaseQty;
-      if(newQty < quantity){
-          return toast('New Quantity must be more than Old Quantity')
-      }
+      const newQty = parseInt(increaseQty) + parseInt(quantity);
         const updatedProduct = { quantity: newQty, ...rest };
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://whispering-crag-62697.herokuapp.com/product/${id}`;
         fetch(url, {
           method: "PUT",
           headers: {

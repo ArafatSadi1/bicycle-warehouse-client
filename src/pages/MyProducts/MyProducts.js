@@ -11,7 +11,7 @@ const MyProducts = () => {
   const { email } = useParams();
   const [myProducts, setMyProducts] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:5000/product?email=${email}`;
+    const url = `https://whispering-crag-62697.herokuapp.com/product?email=${email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setMyProducts(data));
@@ -19,7 +19,7 @@ const MyProducts = () => {
   const handleProductDelete = (id) => {
     const proceed = window.confirm("Are You Sure?");
     if(proceed){
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://whispering-crag-62697.herokuapp.com/product/${id}`;
         fetch(url, {
         method: "DELETE",
       })
