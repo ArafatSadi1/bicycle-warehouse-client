@@ -1,5 +1,4 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
 import Banner from "../Banner/Banner";
 import Products from "../Products/Products";
 import Footer from "../shared/Footer/Footer";

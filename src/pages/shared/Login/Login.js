@@ -5,7 +5,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../Loading/Loading";
 import { toast } from 'react-toastify';
-import googleLogo from '../../../images/google-logo.png'
+import googleLogo from '../../../images/google-logo.png';
+import useToken from "../../../hooks/useToken";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -23,6 +24,7 @@ const Login = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const location = useLocation();
+  const [token] = useToken()
 
   const from = location.state?.from?.pathname || "/";
 
