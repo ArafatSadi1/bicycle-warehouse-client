@@ -22,14 +22,13 @@ const ManageInventories = () => {
     }
   };
   return (
-    <div className="my-5">
-      <Container>
-        <Table className="border-dark" striped bordered hover responsive="sm" >
+      <Container className="my-5">
+        <Table className="border-dark" striped bordered hover responsive >
           <thead>
             <tr>
               <th className="text-center">product Name</th>
               <th className="text-center">Product Id</th>
-              <th className="text-center">Price</th>
+              {/* <th className="text-center">Price</th> */}
               <th className="text-center">Qty</th>
               <th className="text-center">Delete</th>
             </tr>
@@ -42,16 +41,15 @@ const ManageInventories = () => {
             ></ManageInventory>
           ))}
         </Table>
-        <div className="w-50 mx-auto my-5 p-3 bg-dark rounded">
+        <div className="w-75 mx-auto my-5 p-3 bg-dark rounded">
         <Link
           to="/addProduct"
-          className="btn btn-warning d-block mx-auto w-50 fw-bold"
+          className="btn btn-warning d-block mx-auto w-75 fw-bold"
         >
           Add New Product
         </Link>
         </div>
       </Container>
-    </div>
   );
 };
 

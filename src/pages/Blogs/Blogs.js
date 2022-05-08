@@ -31,7 +31,7 @@ const Blogs = () => {
           <h3 className="text-center mb-3">
             When should you use nodejs and when should you use mongodb?
           </h3>
-          <h4>When i Should use nodeJS:</h4>
+          <h4>When should you use nodeJS:</h4>
           <p>
             1. Node.js runs on a single thread which makes it easier to handle
             up to 10,000 concurrent requests.

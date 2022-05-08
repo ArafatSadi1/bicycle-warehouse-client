@@ -1,0 +1,29 @@
+.banner-title{
+    font-size: 5rem;
+    margin-top: 115px;
+}
+.website-name{
+    font-size: 5rem;
+    color: #48dbfb;
+    display: block;
+}
+.banner-text{
+    margin: 20px 0;
+}
+
+@media only screen and (max-width:600px) {
+    .banner-title{
+        margin-top: 20px;
+        font-size: 1.5rem;
+
+    }
+    .website-name{
+        font-size: 1.5rem;
+
+    }
+    .banner-text{
+        font-size: 12px;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+}

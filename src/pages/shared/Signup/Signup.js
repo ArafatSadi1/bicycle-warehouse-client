@@ -2,7 +2,7 @@ import { sendEmailVerification } from "firebase/auth";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init"
 import Loading from "../Loading/Loading";
 
@@ -47,8 +47,8 @@ const Signup = () => {
     createUserWithEmailAndPassword(email, password);
   };
   return (
-    <div className="my-5">
-      <Form onSubmit={handleSignUp} className="w-25 mx-auto">
+    <div className="m-5 row">
+      <Form onSubmit={handleSignUp} className="mx-auto col-lg-4 col-sm-12">
         <h3 className="text-center mb-3 fw-bold">Create Account</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
@@ -99,6 +99,10 @@ const Signup = () => {
         >
           Sign up
         </Button>
+        <p>
+            <Link className="text-decoration-none d-block text-center mt-3" to='/login'>Already have an account?</Link>
+        </p>
+
       </Form>
     </div>
   );

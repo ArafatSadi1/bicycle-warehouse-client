@@ -8,7 +8,7 @@ const ManageInventory = ({ product, handleProductDelete }) => {
       <tr>
         <td className="text-center">{name}</td>
         <td className="text-center">{_id}</td>
-        <td className="text-center">{price}</td>
+        {/* <td className="text-center">{price}</td> */}
         <td className="text-center">{quantity}</td>
         <td className="text-center">
           <Button onClick={() => handleProductDelete(_id)} variant="danger">

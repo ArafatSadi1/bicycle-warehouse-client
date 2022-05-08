@@ -61,8 +61,8 @@ const Login = () => {
     }
   }
   return (
-    <div className="my-5 ">
-      <Form onSubmit={handleLogin} className="w-25 w-md-50 mx-auto">
+    <div className="m-5 row">
+      <Form onSubmit={handleLogin} className="mx-auto col-lg-4 col-sm-12">
           <h3 className="text-center mb-3 fw-bold">Login</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control onBlur={getEmail} className=" border border-dark" type="email" placeholder="Email" />
@@ -77,10 +77,10 @@ const Login = () => {
           Sign in
         </Button>
         <p>
-            <Link className="text-decoration-none d-block text-center mt-3" to='/signup'>Create new account</Link>
+            <Link className="text-decoration-none d-block text-center mt-3" to='/signup'>Create new account?</Link>
         </p>
+        <Button onClick={handleGoogleLogin} variant="danger" className="d-block mx-auto w-100 text-start"><img width={30} className='me-2' src={googleLogo} alt="" /> Sign In With Google</Button>
       </Form>
-      <Button onClick={handleGoogleLogin} variant="danger" className="d-block mx-auto w-25 text-start"><img width={30} className='me-2' src={googleLogo} alt="" /> Sign In With Google</Button>
     </div>
   );
 };

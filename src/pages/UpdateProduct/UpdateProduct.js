@@ -61,7 +61,7 @@ const UpdateProduct = () => {
       .then((updatedData) => setProduct(updatedData));
   };
   return (
-    <Container className="my-5">
+    <Container className="my-5 p-3">
       <Row>
         <Col lg={6}>
           <img className="w-100" src={product.picture} alt="" />
@@ -76,17 +76,19 @@ const UpdateProduct = () => {
               <span className="fw-bold">Feature:</span> {product.about}
             </p>
             <p>
-              <span className="fw-bold">Supplier:</span> {product.supplierName}
+              <span className="fw-bold">Price:</span> ${product.price}
+            </p>
+            <p>
+              <span className="fw-bold">Supplier:</span>
+               {product.supplierName}
             </p>
             <p>
               <span className="fw-bold">Quantity:</span> {product.quantity}
             </p>
-            <p className="fw-bold">${product.price}</p>
-
-            <InputGroup className="mb-3 w-25">
-              <FormLabel className="fw-bold">Restock the items</FormLabel>
+            <InputGroup className="mb-3 w-50">
+              <h5 className="fw-bold">Restock the items</h5>
               <FormControl
-                className="border border-success rounded px-2"
+                className="border border-success rounded px-2 w-50"
                 placeholder="Number"
                 onBlur={getIncreaseQuantity}
               />
@@ -94,6 +96,7 @@ const UpdateProduct = () => {
                 Add
               </Button>
             </InputGroup>
+
             {product.quantity === 0 ? (
               <Button disabled className="w-100 fw-bold mt-3" variant="danger">
                 Sold Out
@@ -110,10 +113,10 @@ const UpdateProduct = () => {
           </div>
         </Col>
       </Row>
-      <div className="w-50 shadow-3 mx-auto my-5 p-3 rounded bg-dark">
+      <div className="w-75 shadow-3 mx-auto my-5 p-3 rounded bg-dark">
         <Link
           to="/manage"
-          className="btn btn-warning d-block mx-auto w-50 fw-bold"
+          className="btn btn-warning d-block mx-auto w-75 fw-bold"
         >
           Manage Products
         </Link>
