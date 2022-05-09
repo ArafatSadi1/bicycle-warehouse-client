@@ -27,7 +27,7 @@ const UpdateProduct = () => {
     const newQty = quantity - 1;
     if (newQty >= 0) {
       const updatedProduct = { quantity: newQty, ...rest };
-      const url = `http://localhost:5000/product/${id}`;
+      const url = `https://whispering-crag-62697.herokuapp.com/product/${id}`;
       const {updatedData} = await axios.put(url, updatedProduct);
       setProduct(updatedData)
       toast('Delivery success')
