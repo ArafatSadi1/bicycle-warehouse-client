@@ -16,7 +16,7 @@ const UpdateProduct = () => {
   const [product, setProduct] = useState({});
   const [increaseQty, setIncreaseQty] = useState(0);
   useEffect(() => {
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://whispering-crag-62697.herokuapp.com/product/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));

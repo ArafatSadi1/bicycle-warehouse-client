@@ -28,8 +28,7 @@ const Login = () => {
   let errorElement;
 
   const from = location.state?.from?.pathname || "/";
-
-  
+ 
   if(token){
     navigate(from, { replace: true });
   }
