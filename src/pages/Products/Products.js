@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Row } from "react-bootstrap";
+import React from "react";
+import { Row, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useProducts from "../../hooks/useProducts";
 import Product from "../Product/Product";
 
 const Products = () => {
-  const [products, setProducts] = useProducts();
+  const [products] = useProducts();
   return (
     <div id="products" className="container">
       <h1 className="my-5 text-center fw-bold">Our Products</h1>
       <Row>
-        {products.slice(0, 6).map((product) => (
+        {products?.slice(0, 6).map((product) => (
           <Product key={product._id} product={product}></Product>
         ))}
       </Row>

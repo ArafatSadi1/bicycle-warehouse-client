@@ -1,20 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useParams } from "react-router-dom";
-import ManageInventory from "../ManageInventories/ManageInventory/ManageInventory";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-import useProducts from "../../hooks/useProducts";
+import axiosPrivate from "../../axiosPrivate/axiosPrivate";
+import { signOut } from "firebase/auth";
 
 const MyProducts = () => {
-  const { email } = useParams();
+  const [user] = useAuthState(auth);
   const [myProducts, setMyProducts] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
-    const url = `https://whispering-crag-62697.herokuapp.com/myProducts?email=${email}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setMyProducts(data));
-  }, [myProducts]);
+    const getMyProducts = async () => {
+        try {
+          const email = user?.email;
+          const url = `https://whispering-crag-62697.herokuapp.com/myProducts?email=${email}`;
+          const { data } = await axiosPrivate.get(url);
+          setMyProducts(data);
+        } catch (error) {
+          if (error.response.status === 401 || error.response.status === 403) {
+            console.log("error");
+            signOut(auth);
+            navigate("/login");
+          }
+        }
+    };
+    getMyProducts();
+  }, [user]);
 
   const handleMyProductDelete = (id) => {
     const proceed = window.confirm("Are You Sure?");
@@ -46,7 +59,7 @@ const MyProducts = () => {
             </tr>
           </thead>
           <tbody>
-          {myProducts?.map((product) => (
+            {myProducts?.map((product) => (
               <tr key={product._id}>
                 <td className="text-center">{product.name}</td>
                 <td className="text-center">{product._id}</td>
@@ -60,7 +73,7 @@ const MyProducts = () => {
                   </Button>
                 </td>
               </tr>
-          ))}
+            ))}
           </tbody>
         </Table>
         <div className="w-75 mx-auto my-5 p-3 bg-dark rounded">

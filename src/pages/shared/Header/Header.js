@@ -4,6 +4,7 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
+import CustomLink from "../CustomLink/CustomLink";
 import Loading from "../Loading/Loading";
 
 const Header = () => {
@@ -29,26 +30,26 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/">
+            <CustomLink to="/">
               Home
-            </Nav.Link>
-            <Nav.Link as={Link} to="/blogs">
+            </CustomLink>
+            <CustomLink to="/blogs">
               Blogs
-            </Nav.Link>
+            </CustomLink>
             {user && (
-              <Nav.Link as={Link} to="/manage">
+              <CustomLink to="/manage">
                 Manage Products
-              </Nav.Link>
+              </CustomLink>
             )}
             {user && (
-              <Nav.Link as={Link} to="/addProduct">
+              <CustomLink to="/addProduct">
                 Add Product
-              </Nav.Link>
+              </CustomLink>
             )}
             {user && (
-              <Nav.Link as={Link} to={`/myProducts/${user.email}`}>
+              <CustomLink to={`/myProducts/${user.email}`}>
                 My Products
-              </Nav.Link>
+              </CustomLink>
             )}
             {user ? (
               <Button
@@ -59,9 +60,9 @@ const Header = () => {
                 Log Out
               </Button>
             ) : (
-              <Nav.Link as={Link} to="/login">
+              <CustomLink as={Link} to="/login">
                 Login
-              </Nav.Link>
+              </CustomLink>
             )}
           </Nav>
         </Navbar.Collapse>

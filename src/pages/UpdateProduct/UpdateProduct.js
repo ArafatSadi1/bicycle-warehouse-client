@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {
   Button,
@@ -22,71 +23,57 @@ const UpdateProduct = () => {
       .then((data) => setProduct(data));
   }, [product]);
 
-  const handleDelivered = (product) => {
+  const handleDelivered = async(product) => {
     const { quantity, ...rest } = product;
     const newQty = quantity - 1;
     if (newQty >= 0) {
       const updatedProduct = { quantity: newQty, ...rest };
-
       const url = `http://localhost:5000/product/${id}`;
-      fetch(url, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(updatedProduct),
-      })
-        .then((res) => res.json())
-        .then((updatedData) => setProduct(updatedData));
-      // toast('Delivery success')
+      const {updatedData} = await axios.put(url, updatedProduct);
+      setProduct(updatedData)
+      toast('Delivery success')
     }
   };
   const getIncreaseQuantity = (event) => {
     setIncreaseQty(event.target.value);
     event.target.value = "";
   };
-  const handleIncreaseQuantity = () => {
+  const handleIncreaseQuantity = async() => {
     const { quantity, ...rest } = product;
-    const newQty = parseInt(increaseQty) + parseInt(quantity);
+    const newQty = parseInt(increaseQty) + quantity;
     const updatedProduct = { quantity: newQty, ...rest };
     const url = `https://whispering-crag-62697.herokuapp.com/product/${id}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    })
-      .then((res) => res.json())
-      .then((updatedData) => setProduct(updatedData));
-  };
+    const {updatedData} = await axios.put(url, updatedProduct);
+    setProduct(updatedData)
+    toast('Update success')
+};
   return (
-    <Container className="my-5 p-3">
+    <Container className="mb-5 mt-0 p-3">
       <Row>
         <Col lg={6}>
-          <img className="w-100" src={product.picture} alt="" />
+          <img className="w-100 p-5" src={product?.picture} alt="" />
         </Col>
         <Col lg={6}>
-          <div>
-            <h4 className="fw-bold mb-5">{product.name}</h4>
-            <p>
-              <span className="fw-bold">Product Id:</span> {product._id}
+          <div className="mt-5">
+            <h4 className="fw-bold mb-3"> {product?.name}</h4>
+            <p className="my-1">
+              Product Id:
+              <span className="fw-light"> {product?._id}</span>
+            </p>
+            <p className="my-1">
+              Feature:
+              <span className="fw-light"> {product?.about}</span>
+            </p>
+            <p className="my-1">Price: ${product?.price}</p>
+            <p className="my-1">
+              Supplier:
+              <span className="fw-light"> {product?.supplierName}</span>
             </p>
             <p>
-              <span className="fw-bold">Feature:</span> {product.about}
-            </p>
-            <p>
-              <span className="fw-bold">Price:</span> ${product.price}
-            </p>
-            <p>
-              <span className="fw-bold">Supplier:</span>
-               {product.supplierName}
-            </p>
-            <p>
-              <span className="fw-bold">Quantity:</span> {product.quantity}
+              Quantity: {product?.quantity}
             </p>
             <InputGroup className="mb-3 w-50">
-              <h5 className="fw-bold">Restock the items</h5>
+              <h5>Restock the items</h5>
               <FormControl
                 className="border border-success rounded px-2 w-50"
                 placeholder="Number"
@@ -97,7 +84,7 @@ const UpdateProduct = () => {
               </Button>
             </InputGroup>
 
-            {product.quantity === 0 ? (
+            {product?.quantity === 0 ? (
               <Button disabled className="w-100 fw-bold mt-3" variant="danger">
                 Sold Out
               </Button>

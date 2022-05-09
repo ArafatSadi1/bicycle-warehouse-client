@@ -13,7 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [
     signInWithEmailAndPassword,
-    signInuser,
+    signInUser,
     signInLoading,
     signInError,
   ] = useSignInWithEmailAndPassword(auth);
@@ -24,16 +24,22 @@ const Login = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const location = useLocation();
-  const [token] = useToken(user);
+  const [token] = useToken(signInUser || GoogleUser);
+  let errorElement;
 
   const from = location.state?.from?.pathname || "/";
 
-  if(user){
+  
+  if(token){
     navigate(from, { replace: true });
   }
 
+  if (signInError || GoogleError) {
+    errorElement = <p className="text-danger">Error: {signInError.message}</p>;
+  }
+
   if(signInLoading || GoogleLoading || loading){
-    return <Loading></Loading>
+    <Loading></Loading>
   }
   
   const getEmail = (event) => {
@@ -74,7 +80,7 @@ const Login = () => {
           <Form.Control onBlur={getPassword} className=" border border-dark" type="password" placeholder="Password" />
         </Form.Group>
         <button onClick={handleResetPassword} className="btn btn-link text-decoration-none mb-5 fs-6">Forgot your password?</button>
-        <p className="text-danger">{signInError?.message} {GoogleError?.message}</p>
+        {errorElement}
         <Button variant="dark" className="d-block mx-auto px-3 py-2" type="submit">
           Sign in
         </Button>

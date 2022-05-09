@@ -2,7 +2,7 @@ import { sendEmailVerification } from "firebase/auth";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import useToken from "../../../hooks/useToken";
 import Loading from "../Loading/Loading";
@@ -16,16 +16,18 @@ const Signup = () => {
   const [confirmPass, setConfirmPass] = useState("");
   const [error, setError] = useState('');
   const [createUserWithEmailAndPassword, user, userError, loading] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-  const [token] = useToken(user)
-
+  const [token] = useToken(user);
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
 
   if(loading){
     return(<Loading></Loading>)
   }
 
-  if(user){
-    navigate('/')
+  if(token){
+    navigate(from, { replace: true });
   }
 
   const getEmail = (event) => {
