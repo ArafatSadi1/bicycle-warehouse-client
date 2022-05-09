@@ -55,7 +55,7 @@ const Signup = () => {
     <div className="m-5 row">
       <Form onSubmit={handleSignUp} className="mx-auto col-lg-4 col-sm-12">
         <h3 className="text-center mb-3 fw-bold">Create Account</h3>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Control
             className="border border-dark"
             type="text"
@@ -83,7 +83,7 @@ const Signup = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
           <Form.Control
             onBlur={getConfirmPass}
             className="border border-dark"

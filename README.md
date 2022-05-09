@@ -9,7 +9,7 @@ Bicycle Warehouse is a product management website. I have worked on the client s
 2. Designed the UI using ReactBoostrap & Boostrap
 3. For Authentication I have used firebase
 4. I have used the React Hook form for the AddProduct component
-5. use JWT for secure and verify the user
+5. use JWT for secure api
 
 
 

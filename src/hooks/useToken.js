@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 const useToken = (user) => {
   const [token, setToken] = useState("");
-  console.log(user)
   useEffect(() => {
     const getToken = async () => {
       const email = user?.user?.email;
